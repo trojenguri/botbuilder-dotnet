@@ -11,7 +11,10 @@
         {
             "$type": "Microsoft.BeginDialog",
             "dialog": "GetTitleToDelete",
-            "property": "dialog.itemTitle"
+            "property": "dialog.itemTitle",
+            "options": {
+                "listType": "dialog.listType"
+            }
         },
         {
             "$type": "Microsoft.TextInput",
@@ -123,14 +126,17 @@
             "intent": "GetItemToDelete",
             "steps": [
                 {
+                    "$type": "Microsoft.BeginDialog",
+                    "dialog": "GetTitleToDelete",
+                    "property": "dialog.itemTitle",
+                    "options": {
+                        "listType": "dialog.listType"
+                    }
+                },
+                {
                     "$type": "Microsoft.SetProperty",
                     "value": "@listType[0][0]",
                     "property": "dialog.listType"
-                },
-                {
-                    "$type": "Microsoft.BeginDialog",
-                    "dialog": "GetTitleToDelete",
-                    "property": "dialog.itemTitle"
                 }
             ]
         }

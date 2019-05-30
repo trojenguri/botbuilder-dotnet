@@ -1,131 +1,14 @@
 {
     "$schema": "../../app.schema",
     "$type": "Microsoft.AdaptiveDialog",
-    "recognizer": "DeleteToDoDialog.lu",
     "steps": [
         {
-            "$type": "Microsoft.SwitchCondition",
-            "condition": "dialog.listType",
-            "cases": [
-                {
-                    "value": "'todo'",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@itemTitle[0] != null && contains(user.lists.todo, @itemTitle[0])",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "value": "@itemTitle[0]",
-                                    "property": "dialog.itemTitle"
-                                }
-                            ]
-                        },
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@ordinal[0] != null && user.lists.todo[int(@ordinal[0]) - 1] != null",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "property": "dialog.itemTitle",
-                                    "value": "user.lists.todo[int(@ordinal[0]) - 1]"
-                                }
-                            ]
-                        },
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@itemTitle[0] == null && @ordinal[0] == null && contains(user.lists.todo, turn.activity.text)",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "property": "dialog.itemTitle",
-                                    "value": "turn.activity.text"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "value": "'shopping'",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@itemTitle[0] != null && contains(user.lists.shopping, @itemTitle[0])",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "value": "@itemTitle[0]",
-                                    "property": "dialog.itemTitle"
-                                }
-                            ]
-                        },
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@ordinal[0] != null && user.lists.shopping[int(@ordinal[0]) - 1] != null",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "property": "dialog.itemTitle",
-                                    "value": "user.lists.shopping[int(@ordinal[0]) - 1]"
-                                }
-                            ]
-                        },
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@itemTitle[0] == null && @ordinal[0] == null && contains(user.lists.shopping, turn.activity.text)",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "property": "dialog.itemTitle",
-                                    "value": "turn.activity.text"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "value": "'grocery'",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@itemTitle[0] != null && contains(user.lists.grocery, @itemTitle[0])",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "value": "@itemTitle[0]",
-                                    "property": "dialog.itemTitle"
-                                }
-                            ]
-                        },
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@ordinal[0] != null && user.lists.grocery[int(@ordinal[0]) - 1] != null",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "property": "dialog.itemTitle",
-                                    "value": "user.lists.grocery[int(@ordinal[0]) - 1]"
-                                }
-                            ]
-                        },
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "@itemTitle[0] == null && @ordinal[0] == null && contains(user.lists.grocery, turn.activity.text)",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SetProperty",
-                                    "property": "dialog.itemTitle",
-                                    "value": "turn.activity.text"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ],
-            "default": [
+            "$type": "Microsoft.IfCondition",
+            "condition": "@itemTitle[0] != null",
+            "steps": [
                 {
                     "$type": "Microsoft.IfCondition",
-                    "condition": "@itemTitle[0] != null && contains(user.lists.todo, @itemTitle[0])",
+                    "condition": "contains(user.lists.todo, @itemTitle[0])",
                     "steps": [
                         {
                             "$type": "Microsoft.SetProperty",
@@ -141,7 +24,7 @@
                 },
                 {
                     "$type": "Microsoft.IfCondition",
-                    "condition": "@itemTitle[0] != null && contains(user.lists.shopping, @itemTitle[0])",
+                    "condition": "contains(user.lists.shopping, @itemTitle[0])",
                     "steps": [
                         {
                             "$type": "Microsoft.SetProperty",
@@ -157,7 +40,7 @@
                 },
                 {
                     "$type": "Microsoft.IfCondition",
-                    "condition": "@itemTitle[0] != null && contains(user.lists.grocery, @itemTitle[0])",
+                    "condition": "contains(user.lists.grocery, @itemTitle[0])",
                     "steps": [
                         {
                             "$type": "Microsoft.SetProperty",
@@ -170,16 +53,102 @@
                             "property": "dialog.listType"
                         }
                     ]
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "dialog.itemTitle == null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SendActivity",
+                            "activity": "[Title-Not-Found]"
+                        },
+                        {
+                            "$type": "Microsoft.EndDialog"
+                        }
+                    ]
                 }
             ]
         },
         {
             "$type": "Microsoft.IfCondition",
-            "condition": "@itemTitle[0] != null && dialog.itemTitle == null",
+            "condition": "@ordinal[0] != null",
             "steps": [
                 {
                     "$type": "Microsoft.SendActivity",
-                    "activity": "[Title-Not-Found]"
+                    "activity": "Value :: {int(@ordinal[0])}"
+                },
+                {
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "Value :: {int(@ordinal[0]) - 1}"
+                },
+                {
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "Value :: {int(int(@ordinal[0]) - 1)}"
+                },
+                {
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "Value :: {user.lists.todo[int(int(@ordinal[0]) - 1)]}"
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "user.lists.todo[int(@ordinal[0]) - 1] != null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "user.lists.todo[int(@ordinal[0]) - 1]",
+                            "property": "dialog.itemTitle"
+                        },
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "todo",
+                            "property": "dialog.listType"
+                        }
+                    ]
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "user.lists.shopping[int(@ordinal[0]) - 1]",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "user.lists.shopping[int(@ordinal[0]) - 1]",
+                            "property": "dialog.itemTitle"
+                        },
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "shopping",
+                            "property": "dialog.listType"
+                        }
+                    ]
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "user.lists.grocery[int(@ordinal[0]) - 1]",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "user.lists.grocery[int(@ordinal[0]) - 1]",
+                            "property": "dialog.itemTitle"
+                        },
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "grocery",
+                            "property": "dialog.listType"
+                        }
+                    ]
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "dialog.itemTitle == null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SendActivity",
+                            "activity": "Sorry, that did not work. Let's try again"
+                        },
+                        {
+                            "$type": "Microsoft.EndDialog"
+                        }
+                    ]
                 }
             ]
         },
