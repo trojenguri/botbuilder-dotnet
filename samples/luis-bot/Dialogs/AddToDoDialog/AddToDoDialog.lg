@@ -7,14 +7,11 @@
 - Absolutely
 
 # Cancel-Prefix
-- Are you suare you want to cancel? 
+- Are you sure you want to cancel? 
 - Just double checking; you want to cancel this right? 
 
 # Confirm-cancellation
-- ```
-@{lgTemplate("Cancel-Prefix")}
-[Suggestions=Yes | No]
-```
+- [Cancel-Prefix]\n\[Suggestions=Yes | No\]
 
 # Ack-Phrase
 - Ok
@@ -24,16 +21,11 @@
 - Absolutely
 
 # Get-List-Type
-- ```
-Please pick the list type to add the item to
-[Suggestions=Todo | Grocery | Shopping]
-```
+- Please pick the list type to add the item to\n\[Suggestions=Todo | Grocery | Shopping\]
 
 # Get-ToDo-Title
-- ```
-@{lgTemplate("Ack-Phrase")}, what would you like to add to your @{dialog.listType} list?
-[Suggestions=Help | Cancel]
-```
+- [Ack-Phrase], what would you like to add to your {dialog.listType} list?\n\[Suggestions=Help | Cancel\]
+
 # Count-prefix
 - You have
 - I have
@@ -44,21 +36,12 @@ Please pick the list type to add the item to
 - ELSE: 
     - item
 
-# Count-readback (listType, lists)
-- IF: {listType == 'todo'}
-    - [Count-prefix] {count(lists.todo)} [item-plurality(lists.todo)] in your {listType} list.
-- ELSEIF: {listType == 'grocery'}
-    - [Count-prefix] {count(lists.grocery)} [item-plurality(lists.grocery)] in your {listType} list.
-- ELSEIF: {listType == 'shopping'}
-    - [Count-prefix] {count(lists.shopping)} [item-plurality(lists.shopping)] in your {listType} list.
-
 > This template uses 'welcome-actions' which is not defined in this LG file. 
 > By default, the ResourceExplorer loads all LG files found in your project and so all template definitions have 'global' scope.
 # Add-ToDo-ReadBack
-- ```
-@{lgTemplate("Help-prefix")}, I have added "@{dialog.itemTitle}" to your @{dialog.listType} list. @{lgTemplate("Count-readback", dialog.listType, user.lists)}
-@{lgTemplate("Welcome-Actions")}
-```
+- [Help-prefix], I have added "{dialog.itemTitle}" to your 
+> {dialog.listType} list. 
+> [Count-prefix] {count(user.lists\[dialog.listType\])} [item-plurality(user.lists\[dialog.listType\])] in your {dialog.listType} list.\n[Welcome-Actions]
 
 # Cancel-add-todo
 - [Help-prefix], I've cancelled that.\n[Welcome-Actions]
