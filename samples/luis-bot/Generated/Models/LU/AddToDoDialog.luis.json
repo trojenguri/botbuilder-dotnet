@@ -1,0 +1,1127 @@
+{
+  "intents": [
+    {
+      "name": "GetListTypeAndTitle"
+    },
+    {
+      "name": "Help"
+    },
+    {
+      "name": "Cancel"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [
+    {
+      "name": "itemTitle",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "listType",
+      "subLists": [
+        {
+          "canonicalForm": "todo",
+          "list": [
+            "todos",
+            "to dos",
+            "todo list",
+            "todos list",
+            "to do list",
+            "tasks"
+          ]
+        },
+        {
+          "canonicalForm": "grocery",
+          "list": [
+            "grocery list",
+            "groceries"
+          ]
+        },
+        {
+          "canonicalForm": "shopping",
+          "list": [
+            "shopping list",
+            "things to buy",
+            "shop",
+            "things to shop"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "regex_entities": [],
+  "model_features": [
+    {
+      "name": "addSomething",
+      "words": "add,create,put",
+      "mode": true,
+      "activated": true
+    },
+    {
+      "name": "todoItem",
+      "words": "todo,todos,to dos,todo list,todos list,item list,items collection,collection,list",
+      "mode": true,
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "buy milk is my todo's title",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "pick up joe at 3pm is the title of my todo",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "the title is Eat when you are hungry",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 13,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "yup, its do groceries this weekend",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 9,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "it is \"learn to dance\"",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 7,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "prep for meeting with John",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "water plants on saturday",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "do groceries",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "pick up Ben on the way home",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "call mom",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "get dog treats",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "pick up joe at 3pm",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "Eat when you are hungry",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "water the garden tomorrow",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "do groceries this weekend",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "learn to dance",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "add banana to the shopping list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "add orange to the grocery list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "add eat to the todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "add donut to the list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "todo",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "grocery",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "shopping",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "to do list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add it to my shopping list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "please make it a todo item",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "that would be grocery",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add an item to the grocery list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "that would be the todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "how about the grocery list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "I would like to add an item to the shopping list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add buy fruits and vegetables to my shopping list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "I would like to add \"some random topic\" to my todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 21,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "I'd like to add \"some random topic\" to my grocery list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 17,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "add an item to the grocery list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add buy fruits and vegetables to my shopping list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "add get a haircut to my tasks",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "Add get a new car to the todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "Add write a spec to the list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "Add finish this demo to my todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "add a todo wrap up coding by tonight",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 11,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "would you add heavy cream to the shopping list?",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 14,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "can you please add milk to the grocery list?",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 19,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "remember to check the water pump",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "add check the water pump this weekend",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "add papaya to shopping",
+      "intent": "GetListTypeAndTitle",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "what can I say?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "What are valid todo titles?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "I need help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "I'm not sure what I can say",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what can you take as a todo title?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "can you please help?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "Cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "I changed my mind",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "I no longer need to add a todo",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Abort that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Do not do that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Let's not do that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Go back",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "undo",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "add",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Add todo",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add another one",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add another todo",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add a to do item",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add an item to the grocery list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add buy fruits and vegetables to my shopping list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add get a haircut to my tasks",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Please remind me to buy milk",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Please remember that I need to buy milk",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "I need you to remember that my wife's birthday is Jan 9th",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Add a todo named send report over this weekend",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Add get a new car to the todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Add write a spec to the list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "Add finish this demo to my todo list",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add a todo wrap up coding by tonight",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "would you add heavy cream to the shopping list?",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "can you please add milk to the grocery list?",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "remember to check the water pump",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add check the water pump this weekend",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "add papaya to shopping",
+      "intent": "GetListTypeAndTitle",
+      "entities": []
+    },
+    {
+      "text": "What can I say?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "Who are you?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "I need help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "Not sure what I can do",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "What do you want me to say?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "What can you do?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "What can you help with?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help please",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "What are my options?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "well, I do not know what my todo's title is",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "I do not know",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "can you please help?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hiya",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how are you?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how do you do?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "cancel all",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "stop that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "do not do it",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "abort",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "please stop what you are doing",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "I changed my mind",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "cancel add todo",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "cancel that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "I do not want to add a todo",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "No todo for me",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Cancel this",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "cancel delete todo",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Let's just leave it as is",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "I do not wish to delete my todo anymore",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Keep my todos as is",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "Remove todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Mark buy milk as complete",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Flag first one as done",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Remove finish this demo from the todo list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "remove another one",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "remove",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "clear my todo named get a new car",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "I'm done with the first todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "I finished the last todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Remove the first todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Delete todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Clear my todos",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Delete all my todos",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Remove all my todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Forget the list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Purge the todo list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Remove item",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "show my todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can you please show my todos?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "please show my todo list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "todo list please",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "I need to see my todo list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can you show me the list?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "please show the list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what do i have on my todo?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what is on my list?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "do i have anything left on my todo list?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "I hope I do not have any todo left",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "do i have any tasks left?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hit me up with more items",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "view my todos",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can you show my todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "see todo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "I would like to see my todos list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "show my shopping list",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what do i have on my grocery list?",
+      "intent": "None",
+      "entities": []
+    }
+  ],
+  "patterns": [
+    {
+      "pattern": "{itemTitle} is [my] (todo|to do)['s] title",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "{itemTitle} is [the] title of [(my|the)] todo",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "[sure][,] the title is {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "[yup][,] its {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "(its|it is) [\"]{itemTitle}[\"]",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "(sure|ok)[(,|.)] the title is {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "{itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "(I would|I'd) like to add [\"]{itemTitle}[\"] [to [my] {listType} [list]]",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "[please] add {itemTitle} to {listType} list",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add {itemTitle} to {listType} [list]",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add {itemTitle} to the {listType} list",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add {itemTitle} to the list",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "[(add|that would be)] [\"]{itemTitle}[\"] to [(my|the)] {listType}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "Please remember [to] {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "I need you to remember [that] {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add a todo named {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add {itemTitle} (to|in) (the|my) {listType} [list]",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add {itemTitle} to the todo list",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add a {listType} [list] [item] [(titled|called|with title)] {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add a todo with [\"]{itemTitle}[\"] [as the title]",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add [\"]{itemTitle}[\"] to the {listType} list",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
+      "pattern": "add {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    }
+  ],
+  "patternAnyEntities": [],
+  "prebuiltEntities": [],
+  "culture": "en-us",
+  "versionId": "0.1",
+  "luis_schema_version": "3.0.0",
+  "desc": "Automatically generated by LUDown and LUBuild",
+  "name": "AddToDoDialog"
+}

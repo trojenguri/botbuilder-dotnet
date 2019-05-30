@@ -1,0 +1,10 @@
+{
+  "name": "luis-bot",
+  "defaultLanguage": "en-us",
+  "models": [
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot\\bin\\LUFiles\\LU\\RootDialog.lu",
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot\\bin\\LUFiles\\LU\\AddToDoDialog.lu",
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot\\bin\\LUFiles\\LU\\DeleteToDoDialog.lu",
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot\\bin\\LUFiles\\LU\\ViewToDoDialog.lu"
+  ]
+}

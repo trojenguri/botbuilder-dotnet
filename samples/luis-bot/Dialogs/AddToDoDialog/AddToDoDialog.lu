@@ -112,6 +112,7 @@ $ addSomething : PhraseList interchangeable
 - {itemTitle=remember to check the water pump}
 - add {itemTitle=check the water pump this weekend}
 - add {itemTitle=papaya} to shopping
+- I said {itemTitle}
 
 # Help
 - what can I say?

@@ -1,0 +1,210 @@
+
+> # Intent definitions
+
+## GetListTypeAndTitle
+- {itemTitle=buy milk} is my todo's title
+- {itemTitle=pick up joe at 3pm} is the title of my todo
+- the title is {itemTitle=Eat when you are hungry}
+- yup, its {itemTitle=do groceries this weekend}
+- it is "{itemTitle=learn to dance}"
+- {itemTitle=prep for meeting with John}
+- {itemTitle=water plants on saturday}
+- {itemTitle=do groceries}
+- {itemTitle=pick up Ben on the way home}
+- {itemTitle=call mom}
+- {itemTitle=get dog treats}
+- {itemTitle=pick up joe at 3pm}
+- {itemTitle=Eat when you are hungry}
+- {itemTitle=water the garden tomorrow}
+- {itemTitle=do groceries this weekend}
+- {itemTitle=learn to dance}
+- add {itemTitle=banana} to the shopping list
+- add {itemTitle=orange} to the grocery list
+- add {itemTitle=eat} to the todo list
+- add {itemTitle=donut} to the list
+- todo
+- grocery
+- shopping
+- to do list
+- add it to my shopping list
+- please make it a todo item
+- that would be grocery
+- add an item to the grocery list
+- that would be the todo list
+- how about the grocery list
+- I would like to add an item to the shopping list
+- add {itemTitle=buy fruits and vegetables} to my shopping list
+- I would like to add "{itemTitle=some random topic}" to my todo list
+- I'd like to add "{itemTitle=some random topic}" to my grocery list
+- add {itemTitle=get a haircut} to my tasks
+- Add {itemTitle=get a new car} to the todo list
+- Add {itemTitle=write a spec} to the list
+- Add {itemTitle=finish this demo} to my todo list
+- add a todo {itemTitle=wrap up coding by tonight}
+- would you add {itemTitle=heavy cream} to the shopping list?
+- can you please add {itemTitle=milk} to the grocery list?
+- {itemTitle=remember to check the water pump}
+- add {itemTitle=check the water pump this weekend}
+- add {itemTitle=papaya} to shopping
+- add
+- Add todo
+- add another one
+- add another todo
+- add a to do item
+- Please remind me to buy milk
+- Please remember that I need to buy milk
+- I need you to remember that my wife's birthday is Jan 9th
+- Add a todo named send report over this weekend
+- {itemTitle} is [my] (todo|to do)['s] title
+- {itemTitle} is [the] title of [(my|the)] todo
+- [sure][,] the title is {itemTitle}
+- [yup][,] its {itemTitle}
+- (its|it is) ["]{itemTitle}["]
+- (sure|ok)[(,|.)] the title is {itemTitle}
+- {itemTitle}
+- (I would|I'd) like to add ["]{itemTitle}["] [to [my] {listType} [list]]
+- [please] add {itemTitle} to {listType} list
+- add {itemTitle} to {listType} [list]
+- add {itemTitle} to the {listType} list
+- add {itemTitle} to the list
+- [(add|that would be)] ["]{itemTitle}["] to [(my|the)] {listType}
+- Please remember [to] {itemTitle}
+- I need you to remember [that] {itemTitle}
+- add a todo named {itemTitle}
+- add {itemTitle} (to|in) (the|my) {listType} [list]
+- add {itemTitle} to the todo list
+- add a {listType} [list] [item] [(titled|called|with title)] {itemTitle}
+- add a todo with ["]{itemTitle}["] [as the title]
+- add ["]{itemTitle}["] to the {listType} list
+- add {itemTitle}
+
+
+## Help
+- what can I say?
+- What are valid todo titles?
+- I need help
+- I'm not sure what I can say
+- what can you take as a todo title?
+- can you please help?
+- What can I say?
+- Who are you?
+- Not sure what I can do
+- What do you want me to say?
+- What can you do?
+- What can you help with?
+- help please
+- What are my options?
+- well, I do not know what my todo's title is
+- I do not know
+
+
+## Cancel
+- Cancel
+- I changed my mind
+- I no longer need to add a todo
+- Abort that
+- Do not do that
+- Let's not do that
+- Go back
+- undo
+- cancel
+- cancel all
+- stop that
+- do not do it
+- abort
+- please stop what you are doing
+- cancel add todo
+- cancel that
+- I do not want to add a todo
+- No todo for me
+- Cancel this
+- cancel delete todo
+- Let's just leave it as is
+- I do not wish to delete my todo anymore
+- Keep my todos as is
+
+
+## None
+- hi
+- hello
+- hiya
+- how are you?
+- how do you do?
+- Remove todo
+- Mark buy milk as complete
+- Flag first one as done
+- Remove finish this demo from the todo list
+- remove another one
+- remove
+- clear my todo named get a new car
+- I'm done with the first todo
+- I finished the last todo
+- Remove the first todo
+- Delete todo
+- Clear my todos
+- Delete all my todos
+- Remove all my todo
+- Forget the list
+- Purge the todo list
+- Remove item
+- show my todo
+- can you please show my todos?
+- please show my todo list
+- todo list please
+- I need to see my todo list
+- can you show me the list?
+- please show the list
+- what do i have on my todo?
+- what is on my list?
+- do i have anything left on my todo list?
+- I hope I do not have any todo left
+- do i have any tasks left?
+- hit me up with more items
+- view my todos
+- can you show my todo
+- see todo
+- I would like to see my todos list
+- show my shopping list
+- what do i have on my grocery list?
+
+
+> # Entity definitions
+
+$itemTitle:simple
+
+
+> # PREBUILT Entity definitions
+
+
+> # Phrase list definitions
+
+$addSomething:phraseList interchangeable
+- add,create,put
+$todoItem:phraseList interchangeable
+- todo,todos,to dos,todo list,todos list,item list,items collection,collection,list
+
+> # List entities
+
+$listType:todo=
+- todos
+- to dos
+- todo list
+- todos list
+- to do list
+- tasks
+
+$listType:grocery=
+- grocery list
+- groceries
+
+$listType:shopping=
+- shopping list
+- things to buy
+- shop
+- things to shop
+
+
+
+> # RegEx entities
+
+

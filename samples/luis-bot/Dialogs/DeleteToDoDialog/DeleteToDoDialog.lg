@@ -12,3 +12,9 @@
 
 # Get-List-Type-delete
 - Please pick the list type to remove the item from\n\[Suggestions=Todo | Grocery | Shopping\]
+
+# Title-Not-Found
+- If: {dialog.listType != null}
+    - Sorry, I did not find "{@itemTitle[0]}" in your {dialog.listType} list.
+- Else:
+    - Sorry, I did not find "{@itemTitle[0]}" in any of your collections (todo/ grocery/ shopping).
