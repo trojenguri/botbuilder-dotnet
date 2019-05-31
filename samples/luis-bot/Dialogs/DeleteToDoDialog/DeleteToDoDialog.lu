@@ -105,6 +105,9 @@ $ PREBUILT : ordinal
 - can you please erase {itemTitle=milk} from the grocery list?
 - {itemTitle=remember to check the water pump}
 - delete {itemTitle=check the water pump this weekend}
+- Grocery [**] {count} (item|items) [**]
+- Todo [**] {count} (item|items) [**]
+- Shopping [**] {count} (item|items) [**]
 
 [TodoPhraseList](../RootDialog/TodoPhraseList.lu)
 

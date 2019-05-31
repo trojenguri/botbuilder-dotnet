@@ -86,6 +86,9 @@
 - delete {itemTitle} from the {listType} list
 - erase {itemTitle} from the list
 - [(remove|that would be)] ["]{itemTitle}["] from [(my|the)] {listType}
+- Grocery [**] {count} (item|items) [**]
+- Todo [**] {count} (item|items) [**]
+- Shopping [**] {count} (item|items) [**]
 - I did {itemTitle}
 - I completed {itemTitle}
 - Mark {itemTitle} as complete

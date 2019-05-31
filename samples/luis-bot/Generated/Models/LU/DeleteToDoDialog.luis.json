@@ -1059,6 +1059,18 @@
       "intent": "GetItemToDelete"
     },
     {
+      "pattern": "Grocery [**] {count} (item|items) [**]",
+      "intent": "GetItemToDelete"
+    },
+    {
+      "pattern": "Todo [**] {count} (item|items) [**]",
+      "intent": "GetItemToDelete"
+    },
+    {
+      "pattern": "Shopping [**] {count} (item|items) [**]",
+      "intent": "GetItemToDelete"
+    },
+    {
       "pattern": "I did {itemTitle}",
       "intent": "GetItemToDelete"
     },
@@ -1087,7 +1099,13 @@
       "intent": "GetItemToDelete"
     }
   ],
-  "patternAnyEntities": [],
+  "patternAnyEntities": [
+    {
+      "name": "count",
+      "explicitList": [],
+      "roles": []
+    }
+  ],
   "prebuiltEntities": [
     {
       "name": "ordinal",

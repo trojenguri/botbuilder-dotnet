@@ -10,11 +10,12 @@
         },
         {
             "$type": "Microsoft.BeginDialog",
-            "dialog": "GetTitleToDelete",
-            "property": "dialog.itemTitle",
-            "options": {
-                "listType": "dialog.listType"
-            }
+            "dialog": "GetTitleToDelete"
+        },
+        {
+            "$type": "Microsoft.SetProperty",
+            "value": "@itemTitle[0]",
+            "property": "dialog.itemTitle"
         },
         {
             "$type": "Microsoft.TextInput",
@@ -22,74 +23,19 @@
             "prompt": "[Get-List-Type-delete]"
         },
         {
-            "$type": "Microsoft.SwitchCondition",
-            "condition": "dialog.listType",
-            "cases": [
+            "$type": "Microsoft.IfCondition",
+            "condition": "user.lists[dialog.listType] == null || count(user.lists[dialog.listType]) <= 0",
+            "steps": [
                 {
-                    "value": "'todo'",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "user.lists.todo == null || count(user.lists.todo) <= 0",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Delete-Empty-List]"
-                                },
-                                {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Welcome-Actions]"
-                                },
-                                {
-                                    "$type": "Microsoft.EndDialog"
-                                }
-                            ]
-                        }
-                    ]
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "[Delete-Empty-List]"
                 },
                 {
-                    "value": "'grocery'",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "user.lists.grocery == null || count(user.lists.grocery) <= 0",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Delete-Empty-List]"
-                                },
-                                {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Welcome-Actions]"
-                                },
-                                {
-                                    "$type": "Microsoft.EndDialog"
-                                }
-                            ]
-                        }
-                    ]
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "[Welcome-Actions]"
                 },
                 {
-                    "value": "'shopping'",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "user.lists.shopping == null || count(user.lists.shopping) <= 0",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Delete-Empty-List]"
-                                },
-                                {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Welcome-Actions]"
-                                },
-                                {
-                                    "$type": "Microsoft.EndDialog"
-                                }
-                            ]
-                        }
-                    ]
+                    "$type": "Microsoft.EndDialog"
                 }
             ]
         },
@@ -126,17 +72,29 @@
             "intent": "GetItemToDelete",
             "steps": [
                 {
-                    "$type": "Microsoft.BeginDialog",
-                    "dialog": "GetTitleToDelete",
-                    "property": "dialog.itemTitle",
-                    "options": {
-                        "listType": "dialog.listType"
-                    }
-                },
-                {
                     "$type": "Microsoft.SetProperty",
                     "value": "@listType[0][0]",
                     "property": "dialog.listType"
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "dialog.listType != null && @listType == null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "createArray(createArray(dialog.listType))",
+                            "property": "turn.entities.listType"
+                        }
+                    ]
+                },
+                {
+                    "$type": "Microsoft.BeginDialog",
+                    "dialog": "GetTitleToDelete"
+                },
+                {
+                    "$type": "Microsoft.SetProperty",
+                    "value": "@itemTitle[0]",
+                    "property": "dialog.itemTitle"
                 }
             ]
         }
