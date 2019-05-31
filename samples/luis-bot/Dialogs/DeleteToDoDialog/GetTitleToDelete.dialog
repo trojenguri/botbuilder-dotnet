@@ -4,46 +4,6 @@
     "steps": [
         {
             "$type": "Microsoft.IfCondition",
-            "condition": "@itemTitle[0] != null",
-            "steps": [
-                {
-                    "$type": "Microsoft.IfCondition",
-                    "condition": "@listType != null",
-                    "steps": [
-                        {
-                            "$type": "Microsoft.IfCondition",
-                            "condition": "contains(user.lists[@listType[0][0]], @itemTitle[0])",
-                            "steps": [
-                                {
-                                    "$type": "Microsoft.EndDialog"
-                                }
-                            ],
-                            "elseSteps": [
-                                {
-                                    "$type": "Microsoft.IfCondition",
-                                    "condition": "count(user.lists[@listType[0][0]]) > 0",
-                                    "steps": [
-                                        {
-                                            "$type": "Microsoft.SendActivity",
-                                            "activity": "[Item-Not-Found-In-Type]"
-                                        },
-                                        {
-                                            "$type": "Microsoft.DeleteProperty",
-                                            "property": "turn.entities.itemTitle"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "$type": "Microsoft.EndDialog"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "$type": "Microsoft.IfCondition",
             "condition": "@ordinal != null",
             "steps": [
                 {
@@ -93,6 +53,46 @@
                                 {
                                     "$type": "Microsoft.EndDialog"
                                 }   
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "$type": "Microsoft.IfCondition",
+            "condition": "@itemTitle[0] != null",
+            "steps": [
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "@listType != null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.IfCondition",
+                            "condition": "contains(user.lists[@listType[0][0]], @itemTitle[0])",
+                            "steps": [
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }
+                            ],
+                            "elseSteps": [
+                                {
+                                    "$type": "Microsoft.IfCondition",
+                                    "condition": "count(user.lists[@listType[0][0]]) > 0",
+                                    "steps": [
+                                        {
+                                            "$type": "Microsoft.SendActivity",
+                                            "activity": "[Item-Not-Found-In-Type]"
+                                        },
+                                        {
+                                            "$type": "Microsoft.DeleteProperty",
+                                            "property": "turn.entities.itemTitle"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }
                             ]
                         }
                     ]
