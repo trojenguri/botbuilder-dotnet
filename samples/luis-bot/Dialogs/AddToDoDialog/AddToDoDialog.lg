@@ -30,7 +30,7 @@
 - You have
 - I have
 
-# item-plurality (x)
+# Item-plurality (x)
 - IF: {count(x) > 1}
     - items
 - ELSE: 
@@ -39,9 +39,7 @@
 > This template uses 'welcome-actions' which is not defined in this LG file. 
 > By default, the ResourceExplorer loads all LG files found in your project and so all template definitions have 'global' scope.
 # Add-ToDo-ReadBack
-- [Help-prefix], I have added "{dialog.itemTitle}" to your 
-> {dialog.listType} list. 
-> [Count-prefix] {count(user.lists\[dialog.listType\])} [item-plurality(user.lists\[dialog.listType\])] in your {dialog.listType} list.\n[Welcome-Actions]
+- [Help-prefix], I have added "{dialog.itemTitle}" to your {dialog.listType} list. [Count-prefix] {count(user.lists[dialog.listType])} [Item-plurality(user.lists[dialog.listType])] in your {dialog.listType} list.\n[Welcome-Actions]
 
 # Cancel-add-todo
 - [Help-prefix], I've cancelled that.\n[Welcome-Actions]

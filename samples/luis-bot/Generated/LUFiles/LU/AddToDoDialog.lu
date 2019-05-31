@@ -68,6 +68,7 @@
 - add {itemTitle} to the {listType} list
 - add {itemTitle} to the list
 - [(add|that would be)] ["]{itemTitle}["] to [(my|the)] {listType}
+- I said {itemTitle}
 - Please remember [to] {itemTitle}
 - I need you to remember [that] {itemTitle}
 - add a todo named {itemTitle}

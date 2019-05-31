@@ -26,7 +26,7 @@
         {
             "$type": "Microsoft.EditArray",
             "itemProperty": "dialog.itemTitle",
-            "arrayProperty": "user.lists[dialog.listType]",
+            "arrayProperty": "user.lists.{dialog.listType}",
             "changeType": "Push"
         },
         {

@@ -1081,6 +1081,10 @@
       "intent": "GetListTypeAndTitle"
     },
     {
+      "pattern": "I said {itemTitle}",
+      "intent": "GetListTypeAndTitle"
+    },
+    {
       "pattern": "Please remember [to] {itemTitle}",
       "intent": "GetListTypeAndTitle"
     },
