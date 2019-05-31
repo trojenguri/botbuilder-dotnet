@@ -20,12 +20,18 @@
                             ],
                             "elseSteps": [
                                 {
-                                    "$type": "Microsoft.SendActivity",
-                                    "activity": "[Item-Not-Found-In-Type]"
-                                },
-                                {
-                                    "$type": "Microsoft.DeleteProperty",
-                                    "property": "turn.entities.itemTitle"
+                                    "$type": "Microsoft.IfCondition",
+                                    "condition": "count(user.lists[@listType[0][0]]) > 0",
+                                    "steps": [
+                                        {
+                                            "$type": "Microsoft.SendActivity",
+                                            "activity": "[Item-Not-Found-In-Type]"
+                                        },
+                                        {
+                                            "$type": "Microsoft.DeleteProperty",
+                                            "property": "turn.entities.itemTitle"
+                                        }
+                                    ]
                                 },
                                 {
                                     "$type": "Microsoft.EndDialog"
