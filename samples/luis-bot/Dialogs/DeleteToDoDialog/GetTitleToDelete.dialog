@@ -25,7 +25,7 @@
                                 },
                                 {
                                     "$type": "Microsoft.DeleteProperty",
-                                    "property": "@itemTitle"
+                                    "property": "turn.entities.itemTitle"
                                 },
                                 {
                                     "$type": "Microsoft.EndDialog"
@@ -62,6 +62,32 @@
                     "elseSteps": [
                         {
                             "$type": "Microsoft.EndDialog"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "$type": "Microsoft.IfCondition",
+            "condition": "@itemTitle == null && @ordinal == null",
+            "steps": [
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "@listType != null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.IfCondition",
+                            "condition": "contains(user.lists[@listType[0][0]], turn.activity.text)",
+                            "steps": [
+                                {
+                                    "$type": "Microsoft.SetProperty",
+                                    "property": "turn.entities.itemTitle",
+                                    "value": "createArray(turn.activity.text)"
+                                },
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }   
+                            ]
                         }
                     ]
                 }

@@ -42,4 +42,4 @@
 - [Help-prefix], I have added "{dialog.itemTitle}" to your {dialog.listType} list. [Count-prefix] {count(user.lists[dialog.listType])} [Item-plurality(user.lists[dialog.listType])] in your {dialog.listType} list.\n[Welcome-Actions]
 
 # Cancel-add-todo
-- [Help-prefix], I've cancelled that.\n[Welcome-Actions]
+- [Help-prefix], I've cancelled the add item operation.\n[Welcome-Actions]

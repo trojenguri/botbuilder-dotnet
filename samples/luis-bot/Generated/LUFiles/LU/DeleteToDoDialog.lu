@@ -36,6 +36,7 @@
 - {itemTitle=water the garden tomorrow}
 - {itemTitle=do groceries this weekend}
 - {itemTitle=learn to dance}
+- {itemTitle=apple}
 - remove {itemTitle=banana} from the shopping list
 - delete {itemTitle=orange} from the grocery list
 - check off {itemTitle=eat} from the todo list

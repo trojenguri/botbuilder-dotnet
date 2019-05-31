@@ -351,6 +351,17 @@
       ]
     },
     {
+      "text": "apple",
+      "intent": "GetItemToDelete",
+      "entities": [
+        {
+          "entity": "itemTitle",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "remove banana from the shopping list",
       "intent": "GetItemToDelete",
       "entities": [
