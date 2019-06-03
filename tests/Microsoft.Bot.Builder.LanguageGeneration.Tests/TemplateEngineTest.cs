@@ -344,5 +344,16 @@ namespace Microsoft.Bot.Builder.AI.LanguageGeneration.Tests
             var msg = "hello from t1, ref template2: 'hello from t2, ref template3: hello from t3' and ref template3: 'hello from t3'";
             Assert.AreEqual(msg, engine.EvaluateTemplate("template1", null));
         }
+
+        [TestMethod]
+        public void TestRegex()
+        {
+            var engine = TemplateEngine.FromFiles(GetExampleFilePath("Regex.lg"));
+            var evaled = engine.EvaluateTemplate("wPhrase", "");
+            Assert.AreEqual(evaled, "Hi");
+
+            evaled = engine.EvaluateTemplate("wPhrase", new { name = "jack"});
+            Assert.AreEqual(evaled, "Hi jack");
+        }
     }
 }

@@ -140,12 +140,16 @@ ESCAPE_CHARACTER
   : '\\{' | '\\[' | '\\\\' | '\\'[rtn\]}]  { ignoreWS = false; expectKeywords = false;}
   ;
 
+REGEX
+  : '/' .*? '/' [gmi]?
+  ;
+
 INVALID_ESCAPE
   : '\\'~[\r\n]?
   ;
 
 EXPRESSION
-  : '@'? '{' ~[\r\n{}]* '}'  { ignoreWS = false; expectKeywords = false;}
+  : '@'? '{' (~[\r\n{}] | REGEX)*  '}'  { ignoreWS = false; expectKeywords = false;}
   ;
 
 TEMPLATE_REF

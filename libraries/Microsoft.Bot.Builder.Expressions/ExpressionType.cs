@@ -103,5 +103,8 @@ namespace Microsoft.Bot.Builder.Expressions
         public const string AddProperty = "addProperty";
         public const string RemoveProperty = "removeProperty";
         public const string SetProperty = "setProperty";
+
+        // Regar expression
+        public const string IsMatch = "isMatch";
     }
 }

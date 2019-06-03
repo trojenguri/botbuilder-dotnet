@@ -16,7 +16,7 @@ expression
 primaryExpression 
     : '(' expression ')'                      #parenthesisExp
     | NUMBER                                  #numericAtom
-    | STRING                                  #stringAtom
+    | (STRING | REGEX)                        #stringAtom
     | IDENTIFIER                              #idAtom
     | primaryExpression '.' IDENTIFIER        #memberAccessExp
     | primaryExpression '(' argsList? ')'     #funcInvokeExp
@@ -31,6 +31,8 @@ fragment LETTER : [a-zA-Z];
 fragment DIGIT : [0-9];
 
 NUMBER : DIGIT + ( '.' DIGIT +)? ;
+
+REGEX : '/' .*? '/' [gmi]?;
 
 WHITESPACE : (' '|'\t'|'\ufeff'|'\u00a0') -> skip;
 

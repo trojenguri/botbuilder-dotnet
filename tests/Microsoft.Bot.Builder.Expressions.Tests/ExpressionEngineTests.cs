@@ -429,6 +429,10 @@ namespace Microsoft.Bot.Builder.Expressions.Tests
             Test("user.lists[user.listType][int(@ordinal[0]) - 1]", "todo1"),
             #endregion
 
+            # region Regex
+            Test("isMatch(/^[a-z]+$/i, 'abC')", true),
+            Test("isMatch(/^[a-z]+$/g, 'abC')", false),
+            # endregion
         };
 
         [DataTestMethod]

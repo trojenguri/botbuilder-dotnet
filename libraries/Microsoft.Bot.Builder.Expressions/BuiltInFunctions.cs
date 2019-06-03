@@ -1782,6 +1782,32 @@ namespace Microsoft.Bot.Builder.Expressions
                     ReturnType.Object,
                     (expr) => ValidateOrder(expr, null, ReturnType.Object, ReturnType.String)),
                 new ExpressionEvaluator(ExpressionType.Foreach, Foreach, ReturnType.Object, ValidateForeach),
+
+                // Regex expression
+                new ExpressionEvaluator(
+                    ExpressionType.IsMatch,
+                    Apply(args =>
+                        {
+                            var pcreregex = (string)args[0];
+
+                            if (string.IsNullOrEmpty(args[1]))
+                            {
+                                return false;
+                            }
+
+                            var flag = pcreregex.Substring(pcreregex.LastIndexOf('/') + 1);
+                            var regex = pcreregex.Substring(1, pcreregex.LastIndexOf('/') - 1);
+                            if (flag == "i")
+                            {
+                                return Regex.IsMatch(args[1], regex, RegexOptions.IgnoreCase);
+                            }
+                            else
+                            {
+                                return Regex.IsMatch(args[1], regex);
+                            }
+                        }),
+                    ReturnType.Boolean,
+                    (expression) => ValidateArityAndAnyType(expression, 2, 2, ReturnType.String)),
             };
 
             var lookup = new Dictionary<string, ExpressionEvaluator>();
