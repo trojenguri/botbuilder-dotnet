@@ -1,0 +1,102 @@
+{
+    "$schema": "../../app.schema",
+    "$type": "Microsoft.AdaptiveDialog",
+    "recognizer": "DeleteToDoDialog.lu",
+    "steps": [
+        {
+            "$type": "Microsoft.SetProperty",
+            "value": "@listType[0][0]",
+            "property": "dialog.listType"
+        },
+        {
+            "$type": "Microsoft.BeginDialog",
+            "dialog": "GetTitleToDelete"
+        },
+        {
+            "$type": "Microsoft.SetProperty",
+            "value": "@itemTitle[0]",
+            "property": "dialog.itemTitle"
+        },
+        {
+            "$type": "Microsoft.TextInput",
+            "property": "dialog.listType",
+            "prompt": "[Get-List-Type-delete]"
+        },
+        {
+            "$type": "Microsoft.IfCondition",
+            "condition": "user.lists[dialog.listType] == null || count(user.lists[dialog.listType]) <= 0",
+            "steps": [
+                {
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "[Delete-Empty-List]"
+                },
+                {
+                    "$type": "Microsoft.SendActivity",
+                    "activity": "[Welcome-Actions]"
+                },
+                {
+                    "$type": "Microsoft.EndDialog"
+                }
+            ]
+        },
+        {
+            "$type": "Microsoft.SendActivity",
+            "activity": "[Show-List]"
+        },
+        {
+            "$type": "Microsoft.TextInput",
+            "prompt": "[Get-ToDo-Title-To-Delete]",
+            "property": "dialog.itemTitle"
+        },
+        {
+            "$type": "Microsoft.EditArray",
+            "arrayProperty": "user.lists.{dialog.listType}",
+            "itemProperty": "dialog.itemTitle",
+            "changeType":"Remove" 
+        },
+        {
+            "$type": "Microsoft.SendActivity",
+            "activity": "[Delete-readBack]"
+        },
+        {
+            "$type": "Microsoft.SendActivity",
+            "activity": "[Show-List]"
+        },
+        {
+            "$type": "Microsoft.EndDialog"
+        }
+    ],
+    "rules":[
+        {
+            "$type": "Microsoft.IntentRule",
+            "intent": "GetItemToDelete",
+            "steps": [
+                {
+                    "$type": "Microsoft.SetProperty",
+                    "value": "@listType[0][0]",
+                    "property": "dialog.listType"
+                },
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "dialog.listType != null && @listType == null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.SetProperty",
+                            "value": "createArray(createArray(dialog.listType))",
+                            "property": "turn.entities.listType"
+                        }
+                    ]
+                },
+                {
+                    "$type": "Microsoft.BeginDialog",
+                    "dialog": "GetTitleToDelete"
+                },
+                {
+                    "$type": "Microsoft.SetProperty",
+                    "value": "@itemTitle[0]",
+                    "property": "dialog.itemTitle"
+                }
+            ]
+        }
+    ]
+}

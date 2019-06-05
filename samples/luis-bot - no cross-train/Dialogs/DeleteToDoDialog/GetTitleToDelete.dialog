@@ -1,0 +1,106 @@
+{
+    "$schema": "../../app.schema",
+    "$type": "Microsoft.AdaptiveDialog",
+    "steps": [
+        {
+            "$type": "Microsoft.IfCondition",
+            "condition": "@ordinal != null",
+            "steps": [
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "@listType != null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.IfCondition",
+                            "condition": "user.lists[@listType[0][0]][int(@ordinal[0]) - 1] != null",
+                            "steps": [
+                                {
+                                    "$type": "Microsoft.SetProperty",
+                                    "property": "turn.entities.itemTitle",
+                                    "value": "createArray(user.lists[@listType[0][0]][int(@ordinal[0]) - 1])"
+                                },
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }   
+                            ]
+                        }   
+                    ],
+                    "elseSteps": [
+                        {
+                            "$type": "Microsoft.EndDialog"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "$type": "Microsoft.IfCondition",
+            "condition": "@itemTitle == null && @ordinal == null",
+            "steps": [
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "@listType != null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.IfCondition",
+                            "condition": "contains(user.lists[@listType[0][0]], turn.activity.text)",
+                            "steps": [
+                                {
+                                    "$type": "Microsoft.SetProperty",
+                                    "property": "turn.entities.itemTitle",
+                                    "value": "createArray(turn.activity.text)"
+                                },
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }   
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "$type": "Microsoft.IfCondition",
+            "condition": "@itemTitle[0] != null",
+            "steps": [
+                {
+                    "$type": "Microsoft.IfCondition",
+                    "condition": "@listType != null",
+                    "steps": [
+                        {
+                            "$type": "Microsoft.IfCondition",
+                            "condition": "contains(user.lists[@listType[0][0]], @itemTitle[0])",
+                            "steps": [
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }
+                            ],
+                            "elseSteps": [
+                                {
+                                    "$type": "Microsoft.IfCondition",
+                                    "condition": "count(user.lists[@listType[0][0]]) > 0",
+                                    "steps": [
+                                        {
+                                            "$type": "Microsoft.SendActivity",
+                                            "activity": "[Item-Not-Found-In-Type]"
+                                        },
+                                        {
+                                            "$type": "Microsoft.DeleteProperty",
+                                            "property": "turn.entities.itemTitle"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "$type": "Microsoft.EndDialog"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "$type": "Microsoft.EndDialog"
+        }
+    ]
+}

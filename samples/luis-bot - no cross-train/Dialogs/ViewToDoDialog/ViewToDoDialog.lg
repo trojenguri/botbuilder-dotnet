@@ -1,0 +1,24 @@
+﻿# get-view-list-type
+- Please pick the list type you would like to see..\n\[Suggestions=Todo [Item-count(user.lists.todo)] | Grocery [Item-count(user.lists.grocery)] | Shopping [Item-count(user.lists.shopping)] | Cancel]
+
+
+# Item-count (list)
+- ** [count-readback(list)] [Items-Ordinality(list)] **
+
+# count-readback (list)
+- IF: {list != null}
+    - {count(list)}
+- ELSE:
+    - no
+
+# Show-List
+- IF: {user.lists[dialog.listType] != null && count(user.lists[dialog.listType]) != 0}
+    - You have {count(user.lists[dialog.listType])} [Items-Ordinality(user.lists[dialog.listType])] in your {dialog.listType} collection.\n- {join(user.lists[dialog.listType], '\r\n- ')}\n[Welcome-Actions]
+- ELSE: 
+    - You do not have any items in your @{dialog.listType} collection.\n[Welcome-Actions]
+
+# Items-Ordinality (list)
+- ELSEIF: {list != null && count(list) == 1}
+    - item
+- ELSE:
+    - items

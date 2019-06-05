@@ -1,0 +1,143 @@
+
+> # Intent definitions
+
+## GetItemToDelete
+- the first one
+- last one
+- its the last one
+- I would like to delete the second item in my list
+- I need to delete {itemTitle=buy milk}
+- I have completed {itemTitle=finish this demo}
+- remove the item with title {itemTitle=water the yard}
+- todo
+- grocery
+- shopping
+- to do list
+- remove it to my shopping list
+- please remove from the shopping list
+- that would be grocery
+- remove an item from the todo list
+- that would be the todo list
+- how about the shopping list
+- I would like to delete an item from the shopping list
+- {itemTitle=buy milk} is my todo's title
+- {itemTitle=pick up joe at 3pm} is the title of my todo
+- the title is {itemTitle=Eat when you are hungry}
+- yup, its {itemTitle=do groceries this weekend}
+- it is "{itemTitle=learn to dance}"
+- {itemTitle=prep for meeting with John}
+- {itemTitle=water plants on saturday}
+- {itemTitle=do groceries}
+- {itemTitle=pick up Ben on the way home}
+- {itemTitle=call mom}
+- {itemTitle=get dog treats}
+- {itemTitle=pick up joe at 3pm}
+- {itemTitle=Eat when you are hungry}
+- {itemTitle=water the garden tomorrow}
+- {itemTitle=do groceries this weekend}
+- {itemTitle=learn to dance}
+- {itemTitle=apple}
+- remove {itemTitle=banana} from the shopping list
+- delete {itemTitle=orange} from the grocery list
+- check off {itemTitle=eat} from the todo list
+- erase {itemTitle=donut} from the list
+- remove {itemTitle=buy fruits and vegetables} from my shopping list
+- I would like to erase "{itemTitle=some random topic}" from my todo list
+- I'd like to delete "{itemTitle=some random topic}" from my grocery list
+- remove an item from the grocery list
+- delete {itemTitle=get a haircut} from my tasks
+- check off {itemTitle=get a new car} from the todo list
+- erase {itemTitle=write a spec} from the list
+- clear {itemTitle=finish this demo} from my todo list
+- remove the todo {itemTitle=wrap up coding by tonight}
+- would you remove {itemTitle=heavy cream} from the shopping list?
+- can you please erase {itemTitle=milk} from the grocery list?
+- {itemTitle=remember to check the water pump}
+- delete {itemTitle=check the water pump this weekend}
+- Remove todo
+- Mark buy milk as complete
+- Flag first one as done
+- Remove finish this demo from the todo list
+- remove another one
+- remove
+- clear my todo named get a new car
+- I'm done with the first todo
+- I finished the last todo
+- Remove the first todo
+- Delete todo
+- Clear my todos
+- Delete all my todos
+- Remove all my todo
+- Forget the list
+- Purge the todo list
+- Remove item
+- [delete] [the] {itemTitle}
+- (delete|remove) [the] item [with title] {itemTitle}
+- {itemTitle}
+- [please] remove {itemTitle} from (my|the) [todo] [list]
+- {itemTitle} is [my] (todo|to do)['s] title
+- {itemTitle} is [the] title of [(my|the)] todo
+- [sure][,] the title is {itemTitle}
+- [yup][,] its {itemTitle}
+- (its|it is) ["]{itemTitle}["]
+- (sure|ok)[(,|.)] the title is {itemTitle}
+- (I would|I'd) like to remove ["]{itemTitle}["] [from [my] {listType} [list]]
+- [please] delete {itemTitle} from {listType} list
+- remove {itemTitle} from {listType} [list]
+- delete {itemTitle} from the {listType} list
+- erase {itemTitle} from the list
+- [(remove|that would be)] ["]{itemTitle}["] from [(my|the)] {listType}
+- Grocery [**] {count} (item|items) [**]
+- Todo [**] {count} (item|items) [**]
+- Shopping [**] {count} (item|items) [**]
+- I did {itemTitle}
+- I completed {itemTitle}
+- Mark {itemTitle} as complete
+- Remove {itemTitle} from my [todo] list
+- [Please] delete {itemTitle} from the list
+- Delete {itemTitle}
+- Remove {itemTitle}
+
+
+> # Entity definitions
+
+$itemTitle:simple
+
+
+> # PREBUILT Entity definitions
+
+$PREBUILT:ordinal
+
+
+> # Phrase list definitions
+
+$removeSomething:phraseList interchangeable
+- remove,delete,erase,check off,clear
+$todoItem:phraseList interchangeable
+- todo,todos,to dos,todo list,todos list,item list,items collection,collection,list
+
+> # List entities
+
+$listType:todo=
+- todos
+- to dos
+- todo list
+- todos list
+- to do list
+- tasks
+
+$listType:grocery=
+- grocery list
+- groceries
+
+$listType:shopping=
+- shopping list
+- things to buy
+- shop
+- things to shop
+
+
+
+> # RegEx entities
+
+

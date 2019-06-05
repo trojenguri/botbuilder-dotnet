@@ -1,0 +1,10 @@
+{
+  "name": "luis-bot - no cross-train",
+  "defaultLanguage": "en-us",
+  "models": [
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot - no cross-train\\Generated\\LUFiles\\LU\\RootDialog.lu",
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot - no cross-train\\Generated\\LUFiles\\LU\\AddToDoDialog.lu",
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot - no cross-train\\Generated\\LUFiles\\LU\\DeleteToDoDialog.lu",
+    "C:\\repos\\v4\\botbuilder-dotnet\\samples\\luis-bot - no cross-train\\Generated\\LUFiles\\LU\\ViewToDoDialog.lu"
+  ]
+}
