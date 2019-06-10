@@ -89,9 +89,9 @@ namespace Microsoft.Bot.Builder.AI.LanguageGeneration.Tests
         [DynamicData(nameof(StaticCheckWariningData))]
         public void WariningTest(string input)
         {
-            var engine = TemplateEngine.FromFiles(GetExampleFilePath(input));
-         
-            var report = new StaticChecker(engine.Templates).Check();
+            var filePath = GetExampleFilePath(input);
+            var lgEntity = new LGFileEntity(filePath);
+            var report = new StaticChecker(lgEntity).Check();
 
             TestContext.WriteLine(string.Join("\n", report));
         }

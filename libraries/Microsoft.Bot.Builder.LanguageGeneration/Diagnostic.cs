@@ -130,7 +130,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// </value>
         public int Character { get; set; }
 
-        public override string ToString() => $"line {Line}:{Character}";
+        public override string ToString() => $"line {Line}: {Character}";
     }
 
     /// <summary>

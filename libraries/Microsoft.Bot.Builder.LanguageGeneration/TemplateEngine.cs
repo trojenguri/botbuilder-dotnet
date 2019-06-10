@@ -54,17 +54,12 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// <returns>Teamplate engine with parsed files.</returns>
         public TemplateEngine AddFiles(params string[] filePaths)
         {
-            var newTemplates = filePaths.Select(filePath =>
+            var lgfiles = filePaths.Select(filePath => new LGFileEntity(filePath));
+
+            foreach (var lgfile in lgfiles)
             {
-                var text = File.ReadAllText(filePath);
-                return LGParser.Parse(text, filePath);
-            }).SelectMany(x => x);
-
-            var mergedTemplates = Templates.Concat(newTemplates).ToList();
-
-            RunStaticCheck(mergedTemplates);
-
-            Templates = mergedTemplates; // only set value after static checking is passed
+                Templates.AddRange(lgfile.Templates);
+            }
 
             return this;
         }
@@ -76,26 +71,8 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// <returns>Template engine with the parsed content.</returns>
         public TemplateEngine AddText(string text)
         {
-            Templates.AddRange(LGParser.Parse(text, "text"));
-            RunStaticCheck();
+            Templates.AddRange(new LGTextEntity(text).Templates);
             return this;
-        }
-
-        /// <summary>
-        /// Check templates/text to match LG format.
-        /// </summary>
-        /// <param name="templates">the templates which should be checked.</param>
-        public void RunStaticCheck(List<LGTemplate> templates = null)
-        {
-            var teamplatesToCheck = templates ?? this.Templates;
-            var checker = new StaticChecker(teamplatesToCheck);
-            var diagnostics = checker.Check();
-
-            var errors = diagnostics.Where(u => u.Severity == DiagnosticSeverity.Error).ToList();
-            if (errors.Count != 0)
-            {
-                throw new Exception(string.Join("\n", errors));
-            }
         }
 
         /// <summary>
@@ -132,14 +109,11 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
                    ? "```" + inlineStr + "```" : inlineStr;
             var wrappedStr = $"# {fakeTemplateId} \r\n - {inlineStr}";
 
-            var parsedTemplates = LGParser.Parse(wrappedStr, "inline");
+            var lgtext = new LGTextEntity(wrappedStr, "inline text");
+            lgtext.Templates.AddRange(Templates);
+            lgtext.RunStaticCheck();
 
-            // merge the existing templates and this new template as a whole for evaluation
-            var mergedTemplates = Templates.Concat(parsedTemplates).ToList();
-
-            RunStaticCheck(mergedTemplates);
-
-            var evaluator = new Evaluator(mergedTemplates, methodBinder);
+            var evaluator = new Evaluator(lgtext.Templates, methodBinder);
             return evaluator.EvaluateTemplate(fakeTemplateId, scope);
         }
     }

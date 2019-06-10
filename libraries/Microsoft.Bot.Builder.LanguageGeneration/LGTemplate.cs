@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Microsoft.Bot.Builder.LanguageGeneration
@@ -77,6 +79,67 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
             }
 
             return new List<string>();
+        }
+    }
+
+    public class LGEntityBase
+    {
+        /// <summary>
+        /// Gets or sets file path of the LG file.
+        /// </summary>
+        /// <value>
+        /// File path of the LG file.
+        /// </value>
+        public string FilePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets LG source, like filename, text, inline text.
+        /// </summary>
+        /// <value>
+        /// LG source, like filename, text, inline text.
+        /// </value>
+        public string Source { get; set; }
+
+        /// <summary>
+        /// Gets or sets templates in LG entity.
+        /// </summary>
+        /// <value>
+        /// Templates in LG entity.
+        /// </value>
+        public List<LGTemplate> Templates { get; set; }
+
+        public void RunStaticCheck()
+        {
+            var checker = new StaticChecker(this);
+            var diagnostics = checker.Check();
+
+            var errors = diagnostics.Where(u => u.Severity == DiagnosticSeverity.Error).ToList();
+            if (errors.Count != 0)
+            {
+                throw new Exception(string.Join("\n", errors));
+            }
+        }
+    }
+
+    public class LGFileEntity: LGEntityBase
+    {
+        public LGFileEntity(string path)
+        {
+            FilePath = path ?? string.Empty;
+            Source = Path.GetFileName(FilePath);
+            Templates = LGParser.Parse(File.ReadAllText(FilePath), Source);
+            RunStaticCheck();
+        }
+    }
+
+    public class LGTextEntity: LGEntityBase
+    {
+        public LGTextEntity(string text, string source = "text")
+        {
+            FilePath = string.Empty;
+            Source = source;
+            Templates = LGParser.Parse(text ?? string.Empty, Source);
+            RunStaticCheck();
         }
     }
 }

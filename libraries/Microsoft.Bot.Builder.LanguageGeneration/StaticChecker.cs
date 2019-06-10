@@ -13,12 +13,14 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
     {
         private Dictionary<string, LGTemplate> templateMap = new Dictionary<string, LGTemplate>();
 
-        public StaticChecker(List<LGTemplate> templates)
+        private LGEntityBase lgentity;
+
+        public StaticChecker(LGEntityBase lgentity)
         {
-            Templates = templates;
+            this.lgentity = lgentity;
         }
 
-        public List<LGTemplate> Templates { get; }
+        public List<LGTemplate> Templates => lgentity.Templates;
 
         /// <summary>
         /// Return error messaages list.
@@ -419,6 +421,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
             var startPosition = context == null ? new Position(0, 0) : new Position(context.Start.Line - 1, context.Start.Column);
             var stopPosition = context == null ? new Position(0, 0) : new Position(context.Stop.Line - 1, context.Stop.Column + context.Stop.Text.Length);
             var range = new Range(startPosition, stopPosition);
+            message = "source: " + lgentity.Source + ", error message: " + message;
             return new Diagnostic(range, message, severity);
         }
     }

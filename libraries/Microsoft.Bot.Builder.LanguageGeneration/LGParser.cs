@@ -14,7 +14,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// <param name="text">LG file content or inline text.</param>
         /// <param name="source">text source.</param>
         /// <returns>LG template list.</returns>
-        public static IList<LGTemplate> Parse(string text, string source = "")
+        public static List<LGTemplate> Parse(string text, string source = "")
         {
             var parseSuccess = TryParse(text, out var templates, out var error, source);
             if (!parseSuccess)
@@ -33,7 +33,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// <param name="error">error/warning list.</param>
         /// <param name="source">text source.</param>
         /// <returns>LG template if parse success.</returns>
-        public static bool TryParse(string text, out IList<LGTemplate> templates, out Diagnostic error, string source = "")
+        public static bool TryParse(string text, out List<LGTemplate> templates, out Diagnostic error, string source = "")
         {
             LGFileParser.FileContext fileContext = null;
             error = null;
@@ -41,7 +41,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
 
             try
             {
-                fileContext = GetFileContentContext(text);
+                fileContext = GetFileContentContext(text, source);
             }
             catch (Exception e)
             {
@@ -58,8 +58,9 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// Get parsed tree node from text by antlr4 engine.
         /// </summary>
         /// <param name="text">Original text which will be parsed.</param>
+        /// <param name="source">File source.</param>
         /// <returns>Parsed tree node.</returns>
-        private static LGFileParser.FileContext GetFileContentContext(string text)
+        private static LGFileParser.FileContext GetFileContentContext(string text, string source)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -71,7 +72,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
             var tokens = new CommonTokenStream(lexer);
             var parser = new LGFileParser(tokens);
             parser.RemoveErrorListeners();
-            var listener = new ErrorListener();
+            var listener = new ErrorListener(source);
 
             parser.AddErrorListener(listener);
             parser.BuildParseTree = true;
@@ -85,7 +86,7 @@ namespace Microsoft.Bot.Builder.LanguageGeneration
         /// <param name="file">LGFile context from antlr parser.</param>
         /// <param name="source">text source.</param>
         /// <returns>lg template list.</returns>
-        private static IList<LGTemplate> ToLGTemplates(LGFileParser.FileContext file, string source = "")
+        private static List<LGTemplate> ToLGTemplates(LGFileParser.FileContext file, string source = "")
         {
             if (file == null)
             {
